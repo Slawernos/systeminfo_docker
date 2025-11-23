@@ -37,6 +37,6 @@ app.get("/api/system", (req, res) => {
   });
 });
 
-app.listen(PORT, "0.0.0.0", () => {
-  console.log(`SysInfo server running on http://0.0.0.0:${PORT}`);
+app.listen(PORT, "localhost", () => {
+  console.log(`SysInfo server running on http://localhost:${PORT}`);
 });
