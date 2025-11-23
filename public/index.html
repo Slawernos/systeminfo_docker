@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>System Info</title>
+    <style>
+      body { font-family: system-ui, Arial, sans-serif; margin: 2rem; background:#0b0b0c; color:#eee; }
+      h1 { margin-bottom: 0.25rem; }
+      .card { background:#151518; padding:1.25rem; border-radius:12px; box-shadow: 0 6px 24px rgba(0,0,0,0.35); }
+      pre { white-space: pre-wrap; word-break: break-word; }
+      .muted { color:#aaa; font-size:0.9rem; }
+      button {
+        margin-top: 1rem; padding: 0.5rem 0.8rem; border-radius: 8px; border:0;
+        background:#2b6cff; color:white; cursor:pointer; font-weight:600;
+      }
+      button:hover { filter: brightness(1.1); }
+    </style>
+  </head>
+  <body>
+    <h1>Current System Details</h1>
+    <div class="muted">Auto-refresh every 5 seconds</div>
+    <div class="card">
+      <pre id="out">Loading...</pre>
+      <button id="refresh">Refresh now</button>
+    </div>
+
+    <script>
+      async function load() {
+        const res = await fetch("/api/system");
+        const data = await res.json();
+        document.getElementById("out").textContent =
+          JSON.stringify(data, null, 2);
+      }
+
+      document.getElementById("refresh").addEventListener("click", load);
+      load();
+      setInterval(load, 5000);
+    </script>
+  </body>
+</html>

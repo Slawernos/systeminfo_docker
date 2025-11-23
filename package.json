@@ -1,0 +1,13 @@
+{
+  "name": "sysinfo-express",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Small Express server showing system details",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
